@@ -1,0 +1,18 @@
+{
+  "name": "chai-stall-terminal-contract",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Play-token prediction market contract for the Chai-Stall Terminal (Road to Devcon 9)",
+  "scripts": {
+    "compile": "hardhat compile",
+    "deploy:sepolia": "hardhat compile && node scripts/deploy.mjs sepolia",
+    "deploy:baseSepolia": "hardhat compile && node scripts/deploy.mjs baseSepolia"
+  },
+  "devDependencies": {
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.26.0"
+  },
+  "dependencies": {
+    "viem": "^2.21.55"
+  }
+}
