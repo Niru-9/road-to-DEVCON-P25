@@ -11,7 +11,7 @@ import { formatTokens } from "../lib/format";
  */
 export function BalanceCard() {
   const { address } = useAccount();
-  const { contractAddress } = useAppChain();
+  const { contractAddress, targetChain } = useAppChain();
   const tx = useTx();
 
   const balanceQuery = useReadContract({
@@ -19,6 +19,7 @@ export function BalanceCard() {
     address: contractAddress,
     functionName: "playBalance",
     args: address ? [address] : undefined,
+    chainId: targetChain.id,
     query: {
       enabled: !!address && !!contractAddress,
       refetchInterval: 20_000,
@@ -30,6 +31,7 @@ export function BalanceCard() {
     address: contractAddress,
     functionName: "faucetUsed",
     args: address ? [address] : undefined,
+    chainId: targetChain.id,
     query: { enabled: !!address && !!contractAddress },
   });
 

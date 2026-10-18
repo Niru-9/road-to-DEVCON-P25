@@ -17,6 +17,7 @@ export function MarketsView() {
     abi: contractAbi,
     address: contractAddress,
     functionName: "marketCount",
+    chainId: targetChain.id, // pin the read to the app's target chain, not wagmi's default
     query: { enabled: isDeployed && !!contractAddress, refetchInterval: 30_000 },
   });
 
@@ -29,6 +30,7 @@ export function MarketsView() {
 
   const marketsQuery = useReadContracts({
     contracts: ids.map((id) => ({
+      chainId: targetChain.id,
       abi: contractAbi,
       address: contractAddress!,
       functionName: "getMarket",

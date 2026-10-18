@@ -52,6 +52,7 @@ export function PositionsView() {
 
   const marketsQuery = useReadContracts({
     contracts: positions.map((p) => ({
+      chainId: targetChain.id,
       abi: contractAbi,
       address: contractAddress!,
       functionName: "getMarket",
@@ -62,6 +63,7 @@ export function PositionsView() {
 
   const claimedQuery = useReadContracts({
     contracts: positions.map((p) => ({
+      chainId: targetChain.id,
       abi: contractAbi,
       address: contractAddress!,
       functionName: "claimed",
@@ -75,6 +77,7 @@ export function PositionsView() {
     address: contractAddress,
     functionName: "playBalance",
     args: address ? [address] : undefined,
+    chainId: targetChain.id,
     query: { enabled: !!address && !!contractAddress },
   });
 
